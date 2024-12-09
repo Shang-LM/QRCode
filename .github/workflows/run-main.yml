@@ -1,0 +1,23 @@
+name: Run main.py
+
+on:
+  push:
+    branches:
+      - main  # 或您代码所在的分支
+  workflow_dispatch: # 手动触发
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11 # 指定Python版本
+
+      - name: Run main.py
+        run: python main.py
