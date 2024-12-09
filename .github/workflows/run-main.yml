@@ -20,11 +20,15 @@ jobs:
           python-version: 3.11
 
       - name: Install dependencies
-        run: pip install qrcode
+        run: |
+          pip install qrcode==8.0
+          pip install pillow==11.0.0
+          pip install qrcode==8.0
+
+      - name: Provide input
+        run: echo "Hello from GitHub Actions!" > input.txt
 
       - name: Run main.py
-        env:
-          INPUT_TEXT: "Hello from GitHub Actions!"  # 定义输入文本
         run: python main.py
 
       - name: Upload output
