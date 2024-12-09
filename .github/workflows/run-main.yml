@@ -1,10 +1,10 @@
-name: Run main.py
+name: Run main.py with input
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
+  workflow_dispatch: # 手动触发
 
 jobs:
   run-python:
@@ -20,7 +20,15 @@ jobs:
           python-version: 3.11
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install qrcode
 
       - name: Run main.py
+        env:
+          INPUT_TEXT: "Hello from GitHub Actions!"  # 定义输入文本
         run: python main.py
+
+      - name: Upload output
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-image
+          path: output.png
