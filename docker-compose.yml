@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  qr_code_generator:
+    build: .
+    ports:
+      - "8009:8009"
+    environment:
+      - PYTHONUNBUFFERED=1
